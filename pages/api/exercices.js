@@ -8,6 +8,8 @@ export default async function handler(req, res) {
 
   try {
     await client.connect();
+    console.log("DATABASE_URL =", process.env.DATABASE_URL); // TEMP debug
+
     const result = await client.query('SELECT name FROM exercices LIMIT 10');
     await client.end();
     res.status(200).json(result.rows);
